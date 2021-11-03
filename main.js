@@ -7,7 +7,7 @@ import * as uuid from "uuid";
 /* ## Config: Environment values ## */
 env.config();
 const application_port = process.env.APP_PORT || 3000;
-const application_max_loop = process.env.MAX_LOOP || 20;
+const application_max_loop = parseInt(process.env.MAX_LOOP || 20, 10);
 
 const app = express();
 const server = http.createServer(app);
