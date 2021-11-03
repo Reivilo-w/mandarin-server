@@ -60,6 +60,22 @@ io.on("connection", (socket) => {
       data: { party: party },
     });
   });
+
+  socket.on("getPartyInformations", (uuid, response) => {
+    const party = parties.find((p) => p.uuid === uuid);
+    if (typeof party === "undefined") {
+      response({
+        status: "error",
+        message: "Error: party not found.",
+      });
+      return;
+    }
+
+    response({
+      status: "success",
+      data: { party: party },
+    });
+  });
 });
 
 server.listen(application_port, () => {
